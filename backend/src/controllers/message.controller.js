@@ -12,7 +12,7 @@ const getUsersForSideBar = async (req,res) => {
         
         filteredUsers = filteredUsers.map((user) => user.toObject({getters: true}));
 
-        console.log(filteredUsers);
+        // console.log(filteredUsers);
 
         return res.status(200).json(filteredUsers);
 

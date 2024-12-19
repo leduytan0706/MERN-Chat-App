@@ -21,7 +21,7 @@ const userSocketMap = {}; // {userId: socketId}
 io.on("connection", (socket) => {
     console.log("A user has connected: ",socket.id);
     
-    console.log(socket.handshake.query);
+    // console.log(socket.handshake.query);
 
     // get the userId from the socket on the client side
     const userId = socket.handshake.query.userId;

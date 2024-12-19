@@ -42,7 +42,8 @@ const signUp = async (req,res) => {
             id: newUser._id,
             email: newUser.email,
             fullName: newUser.fullName,
-            profilePic: newUser.profilePic
+            profilePic: newUser.profilePic,
+            createdAt: newUser.createdAt
         });
     } catch (error) {
         console.log("Error in signUp controller", error.message);
@@ -70,7 +71,8 @@ const logIn = async (req,res) => {
             id: existingUser._id,
             email: existingUser.email,
             fullName: existingUser.fullName,
-            profilePic: existingUser.profilePic
+            profilePic: existingUser.profilePic,
+            createdAt: existingUser.createdAt
         });
     } catch (error) {
         console.log("Error in login controller", error.message);
@@ -116,6 +118,7 @@ const updateProfile = async (req,res) => {
 
 const checkAuth = async (req,res) => {
     try {
+        console.log(req.user);
         return res.status(200).json(req.user);
     } catch (error) {
         console.log("Error in check auth controller", error.message);

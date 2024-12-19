@@ -55,7 +55,9 @@ const useAuthStore = create((set, get) => ({
         set({isLoggingIn: true});
         try {
             const res = await axiosInstance.post("/auth/login",data);
+            console.log(res.data);
             set({authUser: res.data});
+            console.log(get().authUser);
             toast.success("Logged in successfully");
             //connect to socket when logged in
             get().connectSocket();
