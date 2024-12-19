@@ -96,7 +96,7 @@ const logOut = async (req,res) => {
 const updateProfile = async (req,res) => {
     const {profilePic} = req.body;
     try {
-        const userId = req.user._id;
+        const userId = req.user.id;
         if (!profilePic) {
             return res.status(400).json({message: "Profile picture is required."});
         }
@@ -107,7 +107,11 @@ const updateProfile = async (req,res) => {
         });
 
         return res.status(200).json({
-            updatedUser
+            id: updatedUser._id,
+            email: updatedUser.email,
+            fullName: updatedUser.fullName,
+            profilePic: updatedUser.profilePic,
+            createdAt: updatedUser.createdAt
         });
     } catch (error) {
         console.log("Error in update profile controller", error.message);
